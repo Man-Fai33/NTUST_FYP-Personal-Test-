@@ -1,8 +1,17 @@
 <script >
+// import {  } from 'vuex';
+import { createUser } from '../../helper/UserHelper'
 export default {
+
+    computed: {
+        
+    },
     data() {
+ 
         return {
+    
             username: '',
+            email: '',
             password: '',
             emailRules: [
                 value => {
@@ -30,7 +39,25 @@ export default {
     methods: {
         register(event) {
             event.preventDefault();
+            if (!this.username && !this.email && !this.password) {
+                const user = {
+                    username: this.username,
+                    email: this.email,
+                    password: this.password
+                }
+                //api example
+                // createUser(user).then(req => {
+                //     console.log(req.data)
+                // }).catch(error => {
+                //     console.error(error);
+                // })
 
+
+
+                alert(this.username + "\n" + this.email + "\n" + this.password)
+            } else {
+                alert(sdkjfksj)
+            }
         }
     }
 };
@@ -52,9 +79,12 @@ export default {
                         <v-col cols="12">
                             <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
                         </v-col>
+                        <v-col cols="12">
+                            <v-text-field v-model="username" label="Username" :counter="20" required></v-text-field>
+                        </v-col>
 
                         <v-col cols="12">
-                            <v-text-field v-model="password" :rules="passwordRules" :counter="12" label="password"
+                            <v-text-field v-model="password" :rules="passwordRules" :counter="12" label="Password"
                                 required></v-text-field>
                         </v-col>
 

@@ -27,6 +27,7 @@
         <v-img :aspect-ratio="16 / 9" cover src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" />
 
     </div>
+    
 </template>
 <script setup>
 

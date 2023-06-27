@@ -1,14 +1,20 @@
 <script >
-import { store } from '../store/store';
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
-    data: () => {
-        return {
-            store,
+    computed: {
+        ...mapGetters(['getUser']),
+        ...mapMutations(['clearUser']),
+        user() {
+            return this.getUser
         }
+    },
+    data: () => {
+
     },
     methods: {
         SignOut() {
-            store.user = {}
+            this.clearUser
             this.$router.push('/')
         }
     }
@@ -19,18 +25,18 @@ export default {
         <v-layout>
             <v-navigation-drawer expand-on-hover rail>
                 <v-list>
-                    <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="store.user.email"
-                        :subtitle="store.user.email"></v-list-item>
+                    <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="user.email"
+                        :subtitle="user.email"></v-list-item>
                 </v-list>
 
                 <v-divider></v-divider>
 
                 <v-list density="compact" nav>
-                    <router-link to="/"><v-list-item prepend-icon="mdi-folder" title="My Files"
+                    <router-link to="/home"><v-list-item prepend-icon="mdi-folder" title="My Files"
                             value="myfiles" /></router-link>
-                    <router-link to="/"><v-list-item prepend-icon="mdi-account-multiple" title="Shared with me"
+                    <router-link to="/home"><v-list-item prepend-icon="mdi-account-multiple" title="Shared with me"
                             value="shared" /></router-link>
-                    <router-link to="/"><v-list-item prepend-icon="mdi-star" title="Starred"
+                    <router-link to="/home"><v-list-item prepend-icon="mdi-star" title="Starred"
                             value="starred" /></router-link>
                 </v-list>
                 <template v-slot:append>

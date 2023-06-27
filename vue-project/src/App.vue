@@ -1,16 +1,29 @@
 <script >
-import { store } from './components/store/store.js'
+import { mapGetters } from 'vuex';
 import LeftBar from './components/bar/LeftBar.vue';
 export default {
-
   computed: {
-
+    ...mapGetters(['getUser']),
+    user() {
+      return this.getUser;
+    },
   },
-  data: () => {
+  data() {
+
     return {
 
-      store,
     };
+  },
+  methods: {
+    isSignin() {
+      if (user.signin != undefined && user.signin == true) {
+        alert(user.signin)
+        return user.signin
+      } else {
+        return false
+      }
+
+    }
   },
   components: { LeftBar }
 }
@@ -22,7 +35,7 @@ export default {
     <link href="/dist/output.css" rel="stylesheet">
   </head>
 
-  <div v-if="store.user.signin">
+  <div v-if="user.signin">
 
     <LeftBar></LeftBar>
   </div>
@@ -30,6 +43,7 @@ export default {
   <div class="mainDivShow">
     <router-view></router-view>
   </div>
+  <!-- <v-footer></v-footer> -->
 </template>
 <style lang="sass" scoped>
 .mainDivShow

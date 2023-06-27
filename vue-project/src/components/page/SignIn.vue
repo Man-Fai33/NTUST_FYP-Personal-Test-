@@ -33,8 +33,12 @@
     </div>
 </template>
 <script  >
-import { store } from '../store/store.js'
+import { mapState, mapActions } from 'vuex';
+
 export default {
+    computed: {
+        ...mapState(['user']),
+    },
     data: vm => ({
         loading: false,
 
@@ -66,6 +70,7 @@ export default {
     }),
 
     methods: {
+        ...mapActions(['updateUser']),
         async submit(event) {
             this.loading = true
             const result = await event
@@ -79,12 +84,14 @@ export default {
             event.preventDefault();
             if (this.email === '123@gmail.com' && this.password === '123') {
                 // alert(this.email + '\n' + this.password)
-
-                store.user.email = this.email
-                store.user.password = this.password
-                store.user.signin = true
+                const user = {
+                    email: this.email,
+                    password: this.password,
+                    signin: true
+                };
+                this.updateUser(user);
                 this.loading = false
-                this.$router.push('/')
+                this.$router.push('/home')
             } else {
                 // 登入失敗，顯示錯誤信息
                 this.loading = false

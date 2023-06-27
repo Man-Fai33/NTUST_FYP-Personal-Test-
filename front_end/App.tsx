@@ -29,7 +29,17 @@ import {
 //   title: string;
 // }>;
 
-
+const routes = [
+  {name: 'Home', component: Index},
+  // {name: 'LoginHome', component: LoginIndex},
+  // {name: 'MainHome', component: HomeIndex},
+  // {name: 'SettingsPage', component: SettingsPage},
+  // {name: 'HistoryPage', component: History},
+  // {name: 'PractiseHome', component: PractiseIndex},
+  // {name: 'SubmitEval', component: SubmitIndex},
+  // {name: 'EvalResult', component: EvalResult},
+  // {name: 'EvalDetails', component: EvalDiff},
+];
 
 
 function App(){
