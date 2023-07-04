@@ -34,7 +34,7 @@
 </template>
 <script  >
 import { mapState, mapActions } from 'vuex';
-
+import { getUsers } from '../../helper/UserHelper';
 export default {
     computed: {
         ...mapState(['user']),
@@ -82,14 +82,20 @@ export default {
         Login(event) {
             this.loading = true
             event.preventDefault();
-            if (this.email === '123@gmail.com' && this.password === '123') {
-                // alert(this.email + '\n' + this.password)
+
+            if (this.email !== null && this.password !== null) {
                 const user = {
                     email: this.email,
                     password: this.password,
-                    signin: true
                 };
-                this.updateUser(user);
+
+
+                getUsers(user).then((res) => {
+                    this.updateUser(res.data.user);
+                }).catch((error) => {
+                    console.log(error)
+                })
+
                 this.loading = false
                 this.$router.push('/home')
             } else {

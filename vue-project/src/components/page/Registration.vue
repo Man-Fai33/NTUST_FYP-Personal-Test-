@@ -4,12 +4,11 @@ import { createUser } from '../../helper/UserHelper'
 export default {
 
     computed: {
-        
     },
     data() {
- 
+
         return {
-    
+
             username: '',
             email: '',
             password: '',
@@ -39,24 +38,29 @@ export default {
     methods: {
         register(event) {
             event.preventDefault();
-            if (!this.username && !this.email && !this.password) {
-                const user = {
+            if (this.username != undefined && this.email !== undefined && this.password !== undefined) {
+                var user = {
                     username: this.username,
                     email: this.email,
                     password: this.password
                 }
+                const created = {}
                 //api example
-                // createUser(user).then(req => {
-                //     console.log(req.data)
-                // }).catch(error => {
-                //     console.error(error);
-                // })
+                createUser(user).then(res => {
+
+                    created = res.data.user
+                }).catch(error => {
+                    console.error(error);
+                })
+                alert("User " + created.username + " Created!!")
+
+                if (created.created === true) {
+                    this.$router.push('/home')
+                }
 
 
-
-                alert(this.username + "\n" + this.email + "\n" + this.password)
             } else {
-                alert(sdkjfksj)
+                alert("sdkjfksj")
             }
         }
     }
