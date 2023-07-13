@@ -33,11 +33,12 @@
     </div>
 </template>
 <script  >
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 import { getUsers } from '../../helper/UserHelper';
 export default {
     computed: {
         ...mapState(['user']),
+
     },
     data: vm => ({
         loading: false,
@@ -71,6 +72,7 @@ export default {
 
     methods: {
         ...mapActions(['updateUser']),
+        ...mapGetters(['getUser']),
         async submit(event) {
             this.loading = true
             const result = await event
@@ -88,16 +90,22 @@ export default {
                     email: this.email,
                     password: this.password,
                 };
-
-
                 getUsers(user).then((res) => {
-                    this.updateUser(res.data.user);
+                    var user = res.data.user
+
+                    this.updateUser(user);
+
+                    this.loading = false
+
+                    if (user.signin === true) {
+                        this.$router.push('/home')
+                    }
                 }).catch((error) => {
                     console.log(error)
                 })
 
-                this.loading = false
-                this.$router.push('/home')
+
+
             } else {
                 // 登入失敗，顯示錯誤信息
                 this.loading = false
@@ -110,6 +118,7 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+
 .signinForm
     width: 100%
     margin-top: 10rem

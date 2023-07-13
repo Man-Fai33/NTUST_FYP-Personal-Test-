@@ -36,10 +36,8 @@ export default {
   </head>
 
   <div v-if="user.signin">
-
     <LeftBar></LeftBar>
   </div>
-
   <div class="mainDivShow">
     <router-view></router-view>
   </div>

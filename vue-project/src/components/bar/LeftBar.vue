@@ -17,6 +17,7 @@ export default {
             this.clearUser
             this.$router.push('/')
         }
+
     }
 }
 </script>

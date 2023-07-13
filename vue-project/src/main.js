@@ -26,6 +26,7 @@ import Index from './components/page/Index.vue'
 import Home from './components/page/Home.vue'
 import SignIn from './components/page/SignIn.vue'
 import Registration from './components/page/Registration.vue'
+import Search_Result from './components/page/SearchResult.vue'
 // const About = { template: '<div>About</div>' }
 
 // const App = { template: '<div>App</div>' }
@@ -35,9 +36,13 @@ const routes = [
     { path: '/', component: Index },
     { path: '/signin', component: SignIn },
     { path: '/registration', component: Registration },
-    { path: '/home', component: Home },
+    {
+        path: '/home', name: 'user', component: Home
+    },
+    { path: '/search-result', component: Search_Result },
     // { path: '/about', component: About },
 ]
+
 
 // ui
 const vuetify = createVuetify({
@@ -49,6 +54,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes, // `routes: routes` 的寫法
 })
+
 
 
 createApp(App)

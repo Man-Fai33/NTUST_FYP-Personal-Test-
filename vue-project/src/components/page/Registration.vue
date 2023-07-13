@@ -44,19 +44,21 @@ export default {
                     email: this.email,
                     password: this.password
                 }
-                const created = {}
+
                 //api example
                 createUser(user).then(res => {
-
-                    created = res.data.user
+                    var user = res.data.user
+                    console.log(user)
+                    alert("User " + user.username + " Created!!")
+                    if (user.created === true) {
+                        this.$router.push('/')
+                    }
                 }).catch(error => {
                     console.error(error);
                 })
-                alert("User " + created.username + " Created!!")
 
-                if (created.created === true) {
-                    this.$router.push('/home')
-                }
+
+
 
 
             } else {

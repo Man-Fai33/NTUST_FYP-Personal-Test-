@@ -9,10 +9,10 @@ export default {
     }
   },
   data: () => ({
-
-
   }),
-  methods: {
+  mounted() {
+
+  }, methods: {
 
   },
   components: {
@@ -27,8 +27,9 @@ export default {
     <SearchBar></SearchBar>
 
 
+
     <div class="main-context-layout">
-      sdfs
+      sdfs123
     </div>
   </div>
 </template>

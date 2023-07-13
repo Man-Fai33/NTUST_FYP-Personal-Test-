@@ -9,6 +9,7 @@ var cors = require('cors')
 
 //import Router
 var user = require('./router/users')
+var search = require('./router/search')
 
 
 const app = express()
@@ -20,9 +21,9 @@ var morgan = require('morgan');
 // var config = require('./config');
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
@@ -51,10 +52,9 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
 //using router
 app.use('/users', user)
+app.use('/search', search)
 
 
 
