@@ -29,8 +29,7 @@ const store = createStore({
     },
     actions: {
         updateUser({ commit }, user) {
-            // Fetch user data and commit the result to the setUser mutation
-            // Example async call:
+
             commit('setUser', user);
         },
     },

@@ -25,19 +25,22 @@ export default {
     <v-card>
         <v-layout>
             <v-navigation-drawer expand-on-hover rail>
+
                 <v-list>
-                    <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="user.email"
-                        :subtitle="user.email"></v-list-item>
+                    <router-link to="/profile">
+                        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg" :title="user.email"
+                            :subtitle="user.email"></v-list-item>
+                    </router-link>
                 </v-list>
 
                 <v-divider></v-divider>
 
                 <v-list density="compact" nav>
-                    <router-link to="/home"><v-list-item prepend-icon="mdi-folder" title="My Files"
+                    <router-link to="/home"><v-list-item prepend-icon="mdi-folder" title="主頁"
                             value="myfiles" /></router-link>
-                    <router-link to="/home"><v-list-item prepend-icon="mdi-account-multiple" title="Shared with me"
+                    <router-link to="/home"><v-list-item prepend-icon="mdi-account-multiple" title="第二頁"
                             value="shared" /></router-link>
-                    <router-link to="/home"><v-list-item prepend-icon="mdi-star" title="Starred"
+                    <router-link to="/home"><v-list-item prepend-icon="mdi-star" title="第三頁"
                             value="starred" /></router-link>
                 </v-list>
                 <template v-slot:append>

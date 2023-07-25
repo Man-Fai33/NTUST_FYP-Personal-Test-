@@ -1,6 +1,7 @@
 <script >
 import { mapGetters } from 'vuex';
 import LeftBar from './components/bar/LeftBar.vue';
+
 export default {
   computed: {
     ...mapGetters(['getUser']),
@@ -35,10 +36,13 @@ export default {
     <link href="/dist/output.css" rel="stylesheet">
   </head>
 
-  <div v-if="user.signin">
+  <div v-if="user.signin == true">
     <LeftBar></LeftBar>
+    <div class="mainDivShow">
+      <router-view></router-view>
+    </div>
   </div>
-  <div class="mainDivShow">
+  <div v-if="user.signin == false">
     <router-view></router-view>
   </div>
   <!-- <v-footer></v-footer> -->

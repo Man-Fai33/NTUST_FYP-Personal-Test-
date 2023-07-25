@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     var search = req.body
     console.log(search)
 
-    res.json({ state: 'sucess' , rep:"shi"})
+    res.json({ state: 'sucess' , rep:search.searchItem})
 
 })
 

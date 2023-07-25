@@ -14,12 +14,13 @@
                             style="justify-content: center; justify-self: center;width: 100%; text-align: center; padding-bottom: 2rem;">
                             SignIn</p>
                         <v-col cols="12">
-                            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                            <v-text-field v-model="email" :rules="emailRules" prepend-icon="mdi-email-outline"
+                                label="E-mail" required></v-text-field>
                         </v-col>
 
                         <v-col cols="12">
-                            <v-text-field v-model="password" :rules="passwordRules" :counter="12" label="password"
-                                required></v-text-field>
+                            <v-text-field v-model="password" :rules="passwordRules" prepend-icon="mdi-lock-outline"
+                                :counter="12" label="password" required></v-text-field>
                         </v-col>
 
                         <v-col cols="12">
@@ -77,7 +78,6 @@ export default {
             this.loading = true
             const result = await event
             this.loading = false
-            // alert(JSON.stringify(result, null, 2))
 
         },
 
@@ -85,7 +85,7 @@ export default {
             this.loading = true
             event.preventDefault();
 
-            if (this.email !== null && this.password !== null) {
+            if (this.email !== '' && this.password !== '') {
                 const user = {
                     email: this.email,
                     password: this.password,
@@ -109,8 +109,8 @@ export default {
             } else {
                 // 登入失敗，顯示錯誤信息
                 this.loading = false
-                // alert('Invalid username or password');
-                alert(this.email + '\n' + this.password)
+                alert(' username or password is empty');
+                // alert(this.email + '\n' + this.password)
             }
 
         }

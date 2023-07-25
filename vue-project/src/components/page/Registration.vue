@@ -9,9 +9,9 @@ export default {
 
         return {
 
-            username: '',
-            email: '',
-            password: '',
+            username: null,
+            email: null,
+            password: null,
             emailRules: [
                 value => {
                     if (value) return true
@@ -38,7 +38,7 @@ export default {
     methods: {
         register(event) {
             event.preventDefault();
-            if (this.username != undefined && this.email !== undefined && this.password !== undefined) {
+            if (this.username !== null && this.email !== null && this.password !== null) {
                 var user = {
                     username: this.username,
                     email: this.email,
@@ -62,7 +62,7 @@ export default {
 
 
             } else {
-                alert("sdkjfksj")
+                alert("please input all text")
             }
         }
     }
@@ -83,15 +83,16 @@ export default {
                             style="justify-content: center; justify-self: center;width: 100%; text-align: center; padding-bottom: 2rem;">
                             註冊</p>
                         <v-col cols="12">
-                            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                            <v-text-field v-model="username" label="Username" prepend-icon="mdi-account-outline"
+                                :counter="20" required></v-text-field>
                         </v-col>
                         <v-col cols="12">
-                            <v-text-field v-model="username" label="Username" :counter="20" required></v-text-field>
+                            <v-text-field v-model="email" :rules="emailRules" prepend-icon="mdi-email-outline"
+                                label="E-mail" required></v-text-field>
                         </v-col>
-
                         <v-col cols="12">
-                            <v-text-field v-model="password" :rules="passwordRules" :counter="12" label="Password"
-                                required></v-text-field>
+                            <v-text-field v-model="password" :rules="passwordRules" prepend-icon="mdi-lock-outline"
+                                :counter="12" label="Password" required></v-text-field>
                         </v-col>
 
                         <v-col cols="12">

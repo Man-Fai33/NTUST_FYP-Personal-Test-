@@ -27,6 +27,8 @@ import Home from './components/page/Home.vue'
 import SignIn from './components/page/SignIn.vue'
 import Registration from './components/page/Registration.vue'
 import Search_Result from './components/page/SearchResult.vue'
+import Profile from './components/page/Profile.vue'
+import About from './components/page/about.vue'
 // const About = { template: '<div>About</div>' }
 
 // const App = { template: '<div>App</div>' }
@@ -39,8 +41,9 @@ const routes = [
     {
         path: '/home', name: 'user', component: Home
     },
+    { path: '/profile', name: 'profile', component: Profile },
     { path: '/search-result', component: Search_Result },
-    // { path: '/about', component: About },
+    { path: '/about', component: About },
 ]
 
 
